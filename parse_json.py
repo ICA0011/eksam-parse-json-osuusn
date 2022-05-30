@@ -1,9 +1,9 @@
 import json, requests
 
-url = 'http://upload.itcollege.ee/~aleksei/eksam.json'
 
 def parse_json(url):
-    
-    # your code here
-    
-    return course_code
+    content = json.loads(requests.get(url).text)
+
+    for course in content['courses']:
+        if course['name'] == "Scripting languages":
+            return course['code']
